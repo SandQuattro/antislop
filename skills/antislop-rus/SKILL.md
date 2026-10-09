@@ -2,7 +2,7 @@
 name: antislop-rus
 description: "Translate English engineering text (specs, implementation plans, technical documentation, design notes, incident notes, status reports) into plain Russian, or clean an existing Russian technical text, with no slop and no meaning loss. Bans slang («нога», «ручка», «флапать»), Cyrillized English («скипнуть», «гейт», «ретрай») and Latin glued to Cyrillic («guard'ом», «CI-матрица»), keeps standard loanwords (CI, коммит, таймаут, кэш, MR), and keeps every identifier, number, condition and hedge. Bundles an EN→RU glossary, a hedge-strength table, style rules and a Go gate. Triggers: «переведи на русский», «переведи спеку», «переведи документацию», «убери слоп», «почисти текст», «без англицизмов», translate to Russian, antislop-rus."
 metadata:
-  version: "1.1.0"
+  version: "1.2.0"
 ---
 
 # antislop-rus
@@ -57,6 +57,12 @@ A finding is a candidate, not an order. Check it against the rule before you edi
    - the headline has the same strength as the body («может» in both);
    - each alternative and example of the suggestion is still there;
    - no new cause, frequency or consequence.
+
+   Then do the **Orwell pass**. The gate does not find these items. They come from George Orwell, «Politics and the English Language» (1946):
+   - a worn metaphor that the lexicon does not list («узкое горлышко», «серебряная пуля»): write the fact it replaces;
+   - a weak verb and a noun that do the work of one verb («осуществить проверку» → «проверить», «производит запись» → «записывает»);
+   - a passive sentence when the actor is known («запрос отправляется сервисом» → «сервис отправляет запрос»);
+   - a word that you can delete with no loss of meaning.
 
 ## Output
 

@@ -3,7 +3,7 @@ name: antislop-eng
 argument-hint: "<file path> [mode] [section|lines] | <inline text>"
 description: "Pass the target as args (a file path or the inline text); with no input it stops and edits nothing. Write or rewrite English in controlled technical English: specs, implementation plans, design notes, technical documentation, manuals, installation and operating procedures, maintenance steps, safety warnings, troubleshooting guides, incident and status reports, tool descriptions, error messages and other engineering text that a non-native reader or an AI agent must not misread. Use when the user mentions controlled language, plain technical English, or asks to make technical text unambiguous. Bundles an approved-word dictionary, the writing rules and a Go checker. Not for marketing, creative or conversational copy."
 metadata:
-  version: "2.2.1"
+  version: "2.3.0"
 ---
 
 # Controlled technical English
@@ -36,7 +36,7 @@ The exit code is 0 even with findings. Read the report. Code fences, indented co
 
 **Strict** — procedures, instructions, implementation plans, safety text, error messages, tool descriptions, inter-agent instructions. Every rule applies, the dictionary included. Replace every non-approved word.
 
-**Relaxed** — explanations, specs, design notes, status reports. Structure rules apply in full. The checker still reports dictionary hits, and you judge each one. Replace a hit when the approved word keeps the meaning and reads naturally. Keep it when the replacement changes or blurs the meaning. The hedge table applies in both modes.
+**Relaxed** — explanations, specs, design notes, status reports. Structure rules apply in full. The checker still reports dictionary hits, and you judge each one. Replace a hit when the approved word keeps the meaning and reads naturally. Keep it when the replacement changes or blurs the meaning. This is Orwell's rule 6: break a rule before you write a sentence that is not clear. Record each word or phrase that you keep in the `Kept as-is` line. The hedge table applies in both modes.
 
 Pick the mode from the text type. Never ask for a procedure: strict is the answer.
 
@@ -56,6 +56,11 @@ Pick the mode from the text type. Never ask for a procedure: strict is the answe
    - Fix every non-approved word, every unknown word (glossary or replace), and every hard finding: length, semicolon, contraction, perfect tense, -ing verb, Latin abbreviation, he/she, paragraph over 6 sentences.
    - Findings marked `?` (passive or adjective, -ing or technical noun, noun cluster) need your judgement.
    - Stop when the only remaining items are ones you can justify. Then read for what no script checks: one topic per sentence, condition first, the approved meaning of each word, ambiguous *with*, *this* and pronouns.
+   - **Orwell pass.** Read the text again for the items that the dictionary cannot find. The items come from George Orwell, "Politics and the English Language" (1946):
+     - A stock metaphor or idiom made of approved words ("is red", "came out"): write the fact that it replaces.
+     - A word that you can remove with no change to the meaning: remove it.
+     - A weak verb and a noun that do the work of one verb ("do an examination of" → "examine"): use the one verb.
+     - A long or formal word where a short word gives the same meaning: use the short word.
 
 5. **Output** (see Output).
 
